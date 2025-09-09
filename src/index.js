@@ -2,9 +2,11 @@ import express from "express";
 
 import { PORT } from "./config.js";
 import bookRoutes from './routes/books.routes.js';
+import userRoutes from './routes/user.routes.js';
 import { sequelize } from "./db.js";
 
 import './entities/Book.js';
+import './entities/User.js';
 
 const app = express();
 
@@ -19,6 +21,7 @@ try {
 
     app.listen(PORT);
     app.use(bookRoutes);
+    app.use(userRoutes);
 
     await sequelize.sync();
 
